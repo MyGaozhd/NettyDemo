@@ -14,11 +14,8 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
-import io.netty.handler.timeout.IdleStateHandler;
 
-import java.util.concurrent.TimeUnit;
-
-public class MyServer {
+public class NettyWebSocketServer {
     public static void main(String[] args) throws Exception{
 
 
@@ -60,7 +57,7 @@ public class MyServer {
                     pipeline.addLast(new WebSocketServerProtocolHandler("/hello2"));
 
                     //自定义的handler ，处理业务逻辑
-                    pipeline.addLast(new MyTextWebSocketFrameHandler());
+                    pipeline.addLast(new NettyWebSocketFrameHandler());
                 }
             });
 
