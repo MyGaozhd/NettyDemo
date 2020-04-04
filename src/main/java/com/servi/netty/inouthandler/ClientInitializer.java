@@ -21,7 +21,7 @@ public class ClientInitializer extends ChannelInitializer<SocketChannel> {
 
         @Override
         protected void encode(ChannelHandlerContext ctx, Long msg, ByteBuf out) throws Exception {
-            System.out.println("LongToByteEncoder 被调用");
+            System.out.println("Client- LongToByteEncoder 被调用");
             System.out.println("msg= " + msg);
             out.writeLong(msg);
         }
@@ -36,7 +36,7 @@ public class ClientInitializer extends ChannelInitializer<SocketChannel> {
 
         @Override
         public void channelActive(ChannelHandlerContext ctx) throws Exception {
-            System.out.println("ClientHandler发送数据");
+            System.out.println("Client - ClientHandler发送数据");
             ctx.writeAndFlush(123456L);
         }
     }

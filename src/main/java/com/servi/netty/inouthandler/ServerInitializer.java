@@ -21,6 +21,7 @@ public class ServerInitializer extends ChannelInitializer<SocketChannel> {
 
         @Override
         protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+            System.out.println("server - ByteToLondDecoder 被调用");
             if (in.readableBytes() >= 8) {
                 out.add(in.readLong());
             }
@@ -32,6 +33,7 @@ public class ServerInitializer extends ChannelInitializer<SocketChannel> {
         @Override
         protected void channelRead0(ChannelHandlerContext ctx, Long msg) throws Exception {
 
+            System.out.println("server -ServerHandler 被调用");
             System.out.println("从客户端" + ctx.channel().remoteAddress() + "读取到long=" + msg);
         }
 
